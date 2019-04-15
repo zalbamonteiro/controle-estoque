@@ -39,17 +39,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="col-xs-12">
                     <ul class="list-group">
                         <?php foreach($produtos as $prod): ?>
-                            <li class="list-group-item">
-                                <div class="col-md-3">
+                            <li class="list-group-item"> 	
+                                <div class="col-sm-1">
                                     <?php echo '#'.$prod['id']; ?>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-sm-2">
                                     <?php echo 'Nome: '.$prod['nome']; ?>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-sm-2">
+                                    <?php echo 'Tipo: '.$prod['tipo']; ?>
+                                </div>
+                                <div class="col-sm-2">
                                     <?php echo 'Valor: R$'.str_replace('.',',',$prod['valor']); ?>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-sm-2">
+                                    <?php echo 'Estoque: '.$prod['estoque']; ?>
+                                </div>
+                                <div class="col-sm-3">
                                     <button class="btn btn-default" onClick="javascript: edit(<?php echo $prod['id'] ?>)"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
                                     <button class="btn btn-danger"  onClick="javascript: excluir(<?php echo $prod['id'] ?>)"><span class="glyphicon glyphicon-trash"></span> Excluir</button>
                                 </div>

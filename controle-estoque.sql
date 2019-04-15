@@ -56,6 +56,17 @@ CREATE TABLE `users` (
   `password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+--
+-- Estrutura para tabela `vendas`
+--
+
+CREATE TABLE `vendas` (
+  `id` int(6) NOT NULL,
+  `id_produto` text NOT NULL,
+  `quantidade` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Despejando dados para a tabela `users`
 --
