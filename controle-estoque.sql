@@ -71,6 +71,13 @@ CREATE TABLE `vendas` (
 -- Despejando dados para a tabela `users`
 --
 
+INSERT INTO `vendas` (`id`, `produto_id`, `quantidade`) VALUES
+(1, 1, 10);
+
+--
+-- Despejando dados para a tabela `users`
+--
+
 INSERT INTO `users` (`id`, `nome`, `password`) VALUES
 (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e');
 

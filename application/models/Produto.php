@@ -29,4 +29,9 @@ class Produto extends CI_Model{
     public function update_prod($id, $data){
         return $this->db->update('produto', $data, "id =".$id);
     }
+	
+	public function select_quantidade_vendas_by_produto_id($id){
+        $q = $this->db->select('*')->from('vendas')->where('id_produto',$id)->get();
+        return $q->result();
+    }
 }

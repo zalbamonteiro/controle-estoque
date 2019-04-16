@@ -43,17 +43,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-sm-1">
                                     <?php echo '#'.$prod['id']; ?>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-1">
                                     <?php echo 'Nome: '.$prod['nome']; ?>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-1">
                                     <?php echo 'Tipo: '.$prod['tipo']; ?>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-1">
                                     <?php echo 'Valor: R$'.str_replace('.',',',$prod['valor']); ?>
                                 </div>
                                 <div class="col-sm-2">
-                                    <?php echo 'Estoque: '.$prod['estoque']; ?>
+                                    <?php echo 'estoque_entrada: '.$prod['estoque']; ?>
+                                </div>
+                                <div class="col-sm-1">
+                                    <?php echo 'vendas: '.$prod['vendas']; ?>
+                                </div>
+                                <div class="col-sm-1">
+                                    <?php echo 'estoque_loja: '.$prod['estoque_loja']; ?>
                                 </div>
                                 <div class="col-sm-3">
                                     <button class="btn btn-default" onClick="javascript: edit(<?php echo $prod['id'] ?>)"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
