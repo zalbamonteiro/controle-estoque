@@ -23,10 +23,17 @@ class Produto extends CI_Model{
 
     public function select_by_id($id){
         $q = $this->db->select('*')->from('produto')->where('id',$id)->get();
-        return $q->result();
+        return $q;
     }
 
     public function update_prod($id, $data){
         return $this->db->update('produto', $data, "id =".$id);
+    }
+
+    public function select_search( $text ){
+        $this->load->database('controle-estoque');
+        $q = $this->db->query("select * from produto where produto.nome like '%".$text."%' or produto.tipo like '%".$text."%'");
+        $this->db->close();
+        return $q->result_array();
     }
 }

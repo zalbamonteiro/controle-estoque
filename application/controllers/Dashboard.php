@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller {
     public function index(){
         $this->load->model('produto');
         $produtos = $this->produto->get_produtos();
+        $this->load->view('includes/header');
 		$this->load->view('dashboard', $produtos);
     }
 }

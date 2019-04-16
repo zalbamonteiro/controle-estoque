@@ -12,6 +12,7 @@ class Produtos extends CI_Controller {
     public function index(){
         $this->load->model('produto');
         $data['produtos'] = $this->produto->get_produtos();
+        $this->load->view('includes/header');
 		$this->load->view('produtos_list', $data);
     }
 
@@ -51,6 +52,7 @@ class Produtos extends CI_Controller {
     }
 
     public function adicionar(){
+        $this->load->view('includes/header');
         $this->load->view('produtos_add');   
     }
 
@@ -73,6 +75,7 @@ class Produtos extends CI_Controller {
         $prod_id = $this->uri->segment('3');        
         $this->load->model('produto');
         $data['prod'] = $this->produto->select_by_id($prod_id);   
+        $this->load->view('includes/header');
         $this->load->view('produtos_edit', $data);   
     }
 
@@ -90,6 +93,14 @@ class Produtos extends CI_Controller {
         $this->produto->update_prod($id, $data);   
         redirect('/produtos', 'location'); 
         return true;
+    }
+
+    public function search(){
+        $text = $this->input->post('search');      
+        $this->load->model('produto');  
+        $data['produtos'] = $this->produto->select_search($text);
+        $this->load->view('includes/header');
+        $this->load->view('produtos_list', $data);
     }
 
 }
