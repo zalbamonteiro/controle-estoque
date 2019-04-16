@@ -13,6 +13,24 @@ class Produtos extends CI_Controller {
         $this->load->model('produto');
         $data['produtos'] = $this->produto->get_produtos();
         $this->load->view('includes/header');
+		
+		foreach($data['produtos'] as &$product){
+			$vendas = $this->produto->select_quantidade_vendas_by_produto_id((int)$product['id']);
+			$quantidade = 0;
+			if($vendas != null && count($vendas) > 0){					
+				foreach($vendas as $venda){
+					if($venda->quantidade != null && $venda->quantidade > 0){
+						$quantidade = $quantidade + $venda->quantidade;
+					}
+				}
+			}
+			$product['vendas'] = $quantidade;
+			if($product['vendas'] > 0){
+				$product['estoque_loja'] = (int) $product['estoque'] - (int) $product['vendas'];
+			} else {
+				$product['estoque_loja'] = $product['estoque'];
+			}
+		}
 		$this->load->view('produtos_list', $data);
     }
 
