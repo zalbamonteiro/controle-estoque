@@ -12,6 +12,7 @@ class Fornecedor extends CI_Model{
     public function insert_fornecedor($data){
         return $this->db->insert('fornecedores', $data);
     }
+    
 
     public function inactive($id){
         $this->load->database('controle-estoque');

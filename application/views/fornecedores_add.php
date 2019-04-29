@@ -5,15 +5,7 @@
                     <h2>Adicionar novo Fornecedor</h2>                       
                 </div>
                 <div class="col-xs-6 col-xs-offset-3">
-                    <?php if(isset($produtos)): ?>
-                        <ul class="list-group">
-                            <?php foreach($produtos as $prod): ?>
-                                <li class="list-group-item">
-                                    <?php echo $prod['nome']; ?>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php endif;?>
+                    
                 </div>
                 <div class="col-xs-6 col-xs-offset-3">
                     <hr/>
@@ -39,6 +31,14 @@
                         <div class="form-group">
                             <label>UF </label>
                             <input type="text" maxlength="2" name="estado" id="estado" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Produto </label>                            
+                            <select class="form-control" name="produto" class="form-control" required>
+                                <?php foreach($produtos as $prod): ?>
+                                    <option value="<?php echo $prod['id']; ?>"><?php echo $prod['nome']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <button class="btn btn-primary"> Salvar </button>
                     </form>

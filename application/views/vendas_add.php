@@ -29,7 +29,7 @@
                     <form action="<?php echo site_url('vendas/add') ?>" method="post">
                         <div class="form-group">
                             <label>produto: </label>
-                            <input type="text" name="nome" id="nome" class="form-control" required>
+                            <input type="text" name="nome" id="nome" class="form-control" required disabled>
                             <input type="hidden" class="form-control" name="id" id="id">
                         </div>
                         <div class="form-group">

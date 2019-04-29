@@ -8,9 +8,17 @@ class Fornecedores extends CI_Controller {
 
     public function index(){
         $this->load->model('fornecedor');
+        
         $data['fornecedores']  = $this->fornecedor->get_fornecedores();
         $this->load->view('includes/header');
 		$this->load->view('fornecedores_list', $data);
+    }
+
+    public function adicionar(){
+        $this->load->model('produto');
+        $data['produtos'] = $this->produto->get_produtos(); 
+        $this->load->view('includes/header');
+		$this->load->view('fornecedores_add', $data);
     }
 
     public function add(){
@@ -24,7 +32,7 @@ class Fornecedores extends CI_Controller {
             'estado'  => $this->input->post('estado'),
         );
     
-        $data = $this->fornecedor->insert_fornecedor($data);   
+        $data = $this->fornecedor->insert_fornecedor($data);           
         redirect('/fornecedores', 'location'); 
         return true;
     }
