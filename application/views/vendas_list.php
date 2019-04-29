@@ -1,4 +1,4 @@
-    <main>
+<main>
         <div class="container">                
             <div class="row">
                 <div class="col-xs-12">
@@ -8,42 +8,46 @@
             </div>
             <div class="row">                
                 <div class="col-xs-6">
-                    <button onClick="javascript: add()" class="btn btn-primary" >Adicionar novo</button><br/><br/>
+                    <a href="<?php echo site_url('/vendas/adicionar') ?>" class="btn btn-primary" >Adicionar novo</a><br/><br/>
                 </div>
                 <div class="col-xs-6">
-                    <form class="navbar-form navbar-right" method='post' action="<?php echo site_url('/produtos/search'); ?>">
+                    <form class="navbar-form navbar-right" method='post' action="<?php echo site_url('/vendas/search'); ?>">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="search" placeholder="Search">
+                            <select class="form-control" name="search">
+                                <option> Seleciona um filtro ...</option>
+                                <option value="estoque-positivo">Produtos com Estoque positivo</option>
+                                <option value="estoque-negativo">Produtos com Estoque negativo</option>
+                                <option value="estoque-zerado">Produtos com Estoque zerado</option>
+                                <option value="mais-vendido">Produtos mais vendidos</option>
+                                <option value="menos-vendido">Produtos menos vendidos</option>
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="<?php echo site_url('/produtos') ?>" class="btn btn-default">Limpar filtro</a>
+                        <a href="<?php echo site_url('/vendas') ?>" class="btn btn-default">Limpar filtro</a>
                     </form>
                 </div>
                 <div class="col-xs-12">
                     <table class="table table-bordered">
-                        <?php foreach($produtos as $prod): ?>
+                        <?php foreach($vendas as $vend): ?>
                         <tr>
-                            <td><?php echo '#'.$prod['id']; ?></td>
-                            <td><?php echo 'Nome: '.$prod['nome']; ?></td>
-                            <td><?php echo 'Tipo: '.$prod['tipo']; ?></td>
-                            <td><?php echo 'Valor: R$'.str_replace('.',',',$prod['valor']); ?></td>
-                            <td><?php echo 'estoque_entrada: '.$prod['estoque']; ?></td>
-                            <td><?php echo 'vendas: '.$prod['vendas']; ?></td>
-                            <td><?php echo 'estoque_loja: '.$prod['estoque_loja']; ?></td>
-                            <td>
-                                <button class="btn btn-default" onClick="javascript: edit(<?php echo $prod['id'] ?>)"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
-                                <button class="btn btn-danger"  onClick="javascript: excluir(<?php echo $prod['id'] ?>)"><span class="glyphicon glyphicon-trash"></span> Excluir</button>
-                            </td>
+                            <td><?php echo '#'.$vend['id']; ?></td>
+                            <td><?php echo 'Nome: '.$vend['nome']; ?></td>
+                            <td><?php echo 'Tipo: '.$vend['tipo']; ?></td>
+                            <td><?php echo 'Valor: R$'.str_replace('.',',',$vend['valor']); ?></td>
+                            <td><?php echo 'estoque_entrada: '.$vend['estoque']; ?></td>
+                            <td><?php echo 'vendas: '.$vend['vendas']; ?></td>
+                            <td><?php echo 'estoque_loja: '.$vend['estoque_loja']; ?></td>
+                            <td>    <button class="btn btn-danger"  onClick="javascript: excluir(<?php echo $vend['id'] ?>)"><span class="glyphicon glyphicon-trash"></span> Excluir/ Cancelar venda</button></td>
                         </tr>
                         <?php endforeach; ?>
-                    </table>                    
+                    </table>
                 </div>
                 <div class="col-xs-12">
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <form action="produtos/authenticate" method="post">
+                            <form action="<?php echo site_url('vendas/authenticate') ?>" method="post">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="myModalLabel">Acesso Restrito</h4>
@@ -74,20 +78,9 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script>
-        function edit(id){
-            $("#action").val("editar");
-            $("#prod_id").val(id);
-            $('#myModal').modal('show');
-        }
-
         function excluir(id){
             $("#action").val("deletar");
             $("#prod_id").val(id);
-            $('#myModal').modal('show');
-        }
-
-        function add(){
-            $("#action").val("adicionar");
             $('#myModal').modal('show');
         }
     </script>

@@ -6,12 +6,12 @@
                     <form action="<?php echo site_url('/produtos/update'); ?>" method="post">
                         <div class="form-group">
                             <label>Nome: </label>
-                            <input type="text" name="nome" id="nome" class="form-control" value="<?php echo $prod[0]->nome ?>" required>
+                            <input type="text" name="nome" id="nome" class="form-control" value="<?php echo $prod[0]->nome ?>" disabled> 
                             <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $prod[0]->id ?>">
                         </div>
                         <div class="form-group">
                             <label>Tipo: </label>
-                            <input type="text" name="tipo" id="tipo" class="form-control" value="<?php echo $prod[0]->tipo ?>" required>
+                            <input type="text" name="tipo" id="tipo" class="form-control" value="<?php echo $prod[0]->tipo ?>" disabled>
                         </div>
                         <div class="form-group">
                             <label>Valor: </label>

@@ -1,5 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produto extends CI_Model{
 
@@ -23,7 +22,7 @@ class Produto extends CI_Model{
 
     public function select_by_id($id){
         $q = $this->db->select('*')->from('produto')->where('id',$id)->get();
-        return $q;
+        return $q->result();
     }
 
     public function update_prod($id, $data){

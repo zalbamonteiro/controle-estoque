@@ -17,7 +17,7 @@
                     <div class="caption">
                         <h3 class="text-center">Vendas</h3>
                         <p>...</p>
-                        <p><a href="<?php echo site_url('/produtos'); ?>" class="btn btn-primary" role="button">Ver todos as vendas</a></p>
+                        <p><a href="<?php echo site_url('/vendas'); ?>" class="btn btn-primary" role="button">Ver todos as vendas</a></p>
                     </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                     <div class="caption">
                         <h3 class="text-center">Fornecedores</h3>
                         <p>...</p>
-                        <p><a href="<?php echo site_url('/produtos'); ?>" class="btn btn-primary" role="button">Ver todos os fornecedores</a></p>
+                        <p><a href="<?php echo site_url('/fornecedores'); ?>" class="btn btn-primary" role="button">Ver todos os fornecedores</a></p>
                     </div>
                     </div>
                 </div>
